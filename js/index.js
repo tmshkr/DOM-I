@@ -88,6 +88,7 @@ let interval;
 button.onclick = startInterval;
 
 function startInterval() {
+  h1.style.width = "400px";
   h1.innerText = getTime();
   button.innerText = "Stop Clock";
   button.onclick = stopInterval;
