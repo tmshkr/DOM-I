@@ -10,7 +10,7 @@ const siteContent = {
   },
   cta: {
     h1: "DOM Is Awesome",
-    button: "Get Started",
+    button: "Show Clock",
     "img-src": "img/header-img.png"
   },
   "main-content": {
@@ -48,6 +48,7 @@ logo.setAttribute("src", siteContent["nav"]["img-src"]);
 
 document.querySelectorAll("nav a").forEach((el, i) => {
   el.innerText = siteContent.nav[`nav-item-${i + 1}`];
+  el.style.color = "green";
 });
 
 const cta = document.querySelector(".cta");
@@ -79,3 +80,28 @@ c[2].innerText = siteContent["contact"]["phone"];
 c[3].innerText = siteContent["contact"]["email"];
 
 document.querySelector("footer p").innerText = siteContent.footer.copyright;
+
+const h1 = cta.querySelector("h1");
+const button = cta.querySelector("button");
+let interval;
+
+button.onclick = startInterval;
+
+function startInterval() {
+  h1.innerText = getTime();
+  button.innerText = "Stop Clock";
+  button.onclick = stopInterval;
+  interval = setInterval(() => {
+    h1.innerText = getTime();
+  }, 1000);
+}
+
+function stopInterval() {
+  clearInterval(interval);
+  button.innerText = "Start Clock";
+  button.onclick = startInterval;
+}
+
+function getTime() {
+  return new Date().toLocaleTimeString();
+}
