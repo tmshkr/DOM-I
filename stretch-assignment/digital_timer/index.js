@@ -38,8 +38,8 @@ function updateTimer() {
     digit[4].innerText = 0;
     digits.classList.add("redDigit");
   } else {
-    digit[0].innerText = 0;
-    digit[1].innerText = Math.floor(dt / 1000);
+    digit[0].innerText = Math.floor(dt / 10000) % 10;
+    digit[1].innerText = Math.floor(dt / 1000) % 10;
     digit[3].innerText = Math.floor(dt / 100) % 10;
     digit[4].innerText = Math.floor(dt / 10) % 10;
   }
