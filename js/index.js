@@ -105,3 +105,13 @@ function stopInterval() {
 function getTime() {
   return new Date().toLocaleTimeString();
 }
+
+const nav = document.querySelector("nav");
+const link1 = document.createElement("a");
+const link2 = document.createElement("a");
+link1.innerText = "hello";
+link1.style.color = "chartreuse";
+link2.innerText = "world";
+link2.style.color = "skyblue";
+nav.prepend(link1);
+nav.appendChild(link2);
