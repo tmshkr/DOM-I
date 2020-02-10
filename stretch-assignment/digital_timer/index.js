@@ -28,11 +28,9 @@ function startTimer() {
 }
 
 function updateTimer() {
-  const dt = new Date(Date.now() - t);
-  const s = dt.getSeconds();
-  const ms = dt.getMilliseconds();
+  const dt = Date.now() - t;
 
-  if (s >= 10) {
+  if (dt >= 10000) {
     clearInterval(interval);
     digit[0].innerText = 1;
     digit[1].innerText = 0;
@@ -40,10 +38,9 @@ function updateTimer() {
     digit[4].innerText = 0;
     digits.classList.add("redDigit");
   } else {
-    const msString = String(ms);
-    digit[0].innerText = 0;
-    digit[1].innerText = s;
-    digit[3].innerText = msString[0] || 0;
-    digit[4].innerText = msString[1] || 0;
+    digit[0].innerText = Math.floor(dt / 10000);
+    digit[1].innerText = Math.floor(dt / 1000);
+    digit[3].innerText = Math.floor((dt / 100) % 10);
+    digit[4].innerText = Math.floor((dt / 10) % 10);
   }
 }
